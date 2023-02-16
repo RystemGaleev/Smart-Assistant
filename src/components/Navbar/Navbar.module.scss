@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.link,
+.link_active {
+  color: var(--detail-color);
+  font-size: 20px;
+  font-weight: 500;
+}
+.link_active {
+  color: var(--accent-color);
+}
