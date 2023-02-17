@@ -7,12 +7,15 @@
   --white-color: #fff;
   --light-color: #f6f7fa;
 
+  --white-opacity-color: rgba(255, 255, 255, 0.5);
+  --black-opacity-color: rgba(0, 0, 0, 0.5);
+
   //font-size
-  --font-16: 16px;
-  --font-18: 18px;
-  --font-20: 20px;
-  --font-22: 22px;
-  --font-24: 22px;
+  --fz-16: 16px;
+  --fz-18: 18px;
+  --fz-20: 20px;
+  --fz-22: 22px;
+  --fz-24: 22px;
 
   //other
   --rad: 8px;
@@ -23,6 +26,7 @@ body[data-theme='light'] {
   --text-color: var(--white-color);
   --accent-color: var(--pink-color);
   --detail-color: var(--dark-color);
+  --opacity-color: var(--white-opacity-color);
   //   --detail-color: var(--black-color);
   //   --accent-color: var(--yellow-color);
 }
@@ -31,12 +35,16 @@ body[data-theme='dark'] {
   --text-color: var(--black-color);
   --accent-color: var(--dark-color);
   --detail-color: var(--light-color);
+  --opacity-color: var(--black-opacity-color);
 
   //   --detail-color: var(--white-color);
   //   --accent-color: var(--red-color);
 }
 
 .title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--pink-color);
   &__h2 {
   }
   &__h3 {

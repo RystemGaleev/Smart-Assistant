@@ -1,4 +1,5 @@
 import { SideBar } from '../components/SideBar/SideBar';
+import { Header } from './Header/Header';
 
 type Layout = {
   children?: React.ReactNode;
@@ -6,9 +7,10 @@ type Layout = {
 
 export const Layout = ({ children }: Layout) => {
   return (
-    <div>
+    <>
+      <Header />
       <SideBar />
       {children}
-    </div>
+    </>
   );
 };

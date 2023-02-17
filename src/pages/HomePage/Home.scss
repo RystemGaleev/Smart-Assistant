@@ -1,0 +1,23 @@
+.main {
+  padding-top: 140px;
+
+  &__info {
+    max-width: 550px;
+    color: var(--text-color);
+  }
+  &__title {
+    font-size: 36px;
+    font-weight: 500;
+    span {
+      font-size: 44px;
+      font-weight: 600;
+      color: var(--pink-color);
+    }
+  }
+  &__descr {
+    font-size: var(--fz-18);
+    font-weight: 400;
+    margin-top: 20px;
+    line-height: 26px;
+  }
+}

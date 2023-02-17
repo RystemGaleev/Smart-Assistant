@@ -1,0 +1,30 @@
+.task {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.descr {
+  font-size: var(--fz-18);
+  font-weight: 400;
+  color: var(--text-color);
+  word-break: break-all;
+}
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.remove {
+  color: #fd2525;
+}
+.completed {
+  color: rgb(18, 175, 78);
+}

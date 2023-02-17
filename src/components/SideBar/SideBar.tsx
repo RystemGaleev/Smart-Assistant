@@ -17,8 +17,8 @@ const NavigationLink = [
     icon: <IoHomeOutline className={style.icon} size={26} />,
   },
   {
-    path: '/tasks',
-    title: 'Tasks',
+    path: '/taskmanager',
+    title: 'Task manager',
     icon: <IoListOutline className={style.icon} size={26} />,
   },
   {
