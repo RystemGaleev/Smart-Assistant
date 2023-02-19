@@ -1,37 +1,77 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ITasks } from '../Interfaces';
+import { ICard, ITask } from '../Interfaces';
 
 interface ITasksInterface {
-  tasks: ITasks[];
+  cards: ICard[];
 }
 
 const initialState: ITasksInterface = {
-  tasks: [],
+  cards: [],
 };
 
 const TasksSlice = createSlice({
-  name: 'tasks',
+  name: 'board',
   initialState,
   reducers: {
     addCard(state, { payload: { description, title } }) {
-      state.tasks.push({ description, title, id: uuidv4() });
+      state.cards.push({
+        description,
+        title,
+        id: uuidv4(),
+        subTasks: [],
+      });
+    },
+    addTask(
+      state,
+      {
+        payload: { cardId, taskDescription },
+      }: PayloadAction<{ cardId: string; taskDescription: string }>,
+    ) {
+      const cardIndex = state.cards.findIndex((card) => card.id === cardId);
+      if (cardIndex >= 0) {
+        state.cards[cardIndex].subTasks.push({
+          id: uuidv4(),
+          description: taskDescription,
+          completed: false,
+        });
+      }
+    },
+    removeTask(
+      state,
+      {
+        payload: { cardId, taskId },
+      }: PayloadAction<{ cardId: string; taskId: string }>,
+    ) {
+      const cardIndex = state.cards.findIndex((card) => card.id === cardId);
+      if (cardIndex >= 0) {
+        state.cards[cardIndex].subTasks = state.cards[
+          cardIndex
+        ].subTasks.filter((task) => task.id !== taskId);
+      }
+    },
+    toggleCompletedTask(
+      state,
+      {
+        payload: { cardId, taskId },
+      }: PayloadAction<{ cardId: string; taskId: string }>,
+    ) {
+      const cardIndex = state.cards.findIndex((card) => card.id === cardId);
+
+      if (cardIndex >= 0) {
+        const taskIndex = state.cards[cardIndex].subTasks.findIndex(
+          (task) => task.id === taskId,
+        );
+        if (taskIndex >= 0) {
+          state.cards[cardIndex].subTasks[taskIndex].completed =
+            !state.cards[cardIndex].subTasks[taskIndex].completed;
+        }
+      }
     },
   },
 });
 
-export const { addCard } = TasksSlice.actions;
+export const { addCard, addTask, removeTask, toggleCompletedTask } =
+  TasksSlice.actions;
 export default TasksSlice.reducer;
-
-// removeTask(state, action: PayloadAction<string>) {
-//   const index = state.findIndex((task) => task.id === action.payload);
-//   state.splice(index, 1);
-// },
-// setTaskStatus(
-//   state,
-//   action: PayloadAction<{ completed: boolean; id: string }>,
-// ) {
-//   const index = state.findIndex((task) => task.id === action.payload.id);
-//   state[index].completed = action.payload.completed;
-// },

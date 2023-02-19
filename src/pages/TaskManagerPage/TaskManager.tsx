@@ -9,13 +9,11 @@ import './TaskManager.scss';
 
 export const TaskManager = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const { tasks } = useAppSelector((state) => state.tasks);
+  const { cards } = useAppSelector((state) => state.board);
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-
-  console.log(tasks);
 
   return (
     <Layout>
@@ -31,11 +29,9 @@ export const TaskManager = () => {
             </UiButton>
           </div>
           <div className="taskManager__wrapper">
-            <div className="taskManager__cards">
-              {tasks?.map((card) => (
-                <TaskCard key={card.id} {...card} />
-              ))}
-            </div>
+            {cards?.map((card) => (
+              <TaskCard key={card.id} {...card} />
+            ))}
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@
   font-weight: 400;
   color: var(--text-color);
   word-break: break-all;
+  &.completed {
+    color: red;
+  }
 }
 .tools {
   display: flex;

@@ -10,6 +10,7 @@ export const Home = () => {
             <div className="main__info">
               <h1 className="main__title">
                 <span>Task helper</span> - Your assistant for comfortable work
+                div
               </h1>
               <div className="main__descr">
                 All the necessary packages and libraries are always at hand,

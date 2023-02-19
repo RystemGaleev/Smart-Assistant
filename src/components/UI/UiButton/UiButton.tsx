@@ -19,6 +19,7 @@ export const UiButton: FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      type="button"
       onClick={onClick}
       {...props}
       className={clsx('btn', {

@@ -10,6 +10,7 @@ interface IModalProps {
 
 export const Form = ({ toggleModal }: IModalProps) => {
   const dispatch = useAppDispatch();
+  const [error, setError] = useState('');
   const [taskValue, setTaskValue] = useState({
     title: '',
     description: '',
@@ -17,16 +18,22 @@ export const Form = ({ toggleModal }: IModalProps) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(addCard(taskValue));
-    setTaskValue({ title: '', description: '' });
-    toggleModal();
+    const { title, description } = taskValue;
+    if (title.trim() !== '' && description.trim() !== '') {
+      dispatch(addCard(taskValue));
+      setTaskValue({ title: '', description: '' });
+      toggleModal();
+      setError('');
+    } else {
+      setError('Please fill in all fields');
+    }
   };
 
-  console.log(taskValue);
   return (
     <form onSubmit={handleSubmit} className={style.form}>
-      <div className={style.title}>Create new task</div>
+      <div className={style.title}>Create new card</div>
       <div className={style.inputs}>
+        {error && error ? <p className={style.error}>{error}</p> : null}
         <div className={style.block}>
           <label htmlFor="title">Title</label>
           <input
