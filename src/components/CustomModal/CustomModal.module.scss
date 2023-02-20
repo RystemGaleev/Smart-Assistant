@@ -23,10 +23,11 @@
 }
 .content {
   position: relative;
+  width: 460px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 20px 30px;
+  padding: 50px 30px 20px;
   color: var(--text-color);
   background-color: var(--detail-color);
   border-radius: var(--rad);

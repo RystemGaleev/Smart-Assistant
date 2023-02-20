@@ -6,6 +6,7 @@ interface ButtonProps {
   children: React.ReactNode;
   variant: string;
   size: string;
+  type?: 'button' | 'reset' | 'submit' | undefined;
   disabled?: boolean;
   onClick?: () => void;
 }
@@ -14,12 +15,13 @@ export const UiButton: FC<ButtonProps> = ({
   children,
   variant,
   size,
+  type = 'submit',
   onClick,
   ...props
 }) => {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       {...props}
       className={clsx('btn', {

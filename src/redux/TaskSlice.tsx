@@ -21,7 +21,12 @@ const TasksSlice = createSlice({
         title,
         id: uuidv4(),
         subTasks: [],
+        status: [],
       });
+    },
+    deleteCard(state, { payload: id }) {
+      const findCard = state.cards.filter((card) => card.id !== id);
+      state.cards = findCard;
     },
     addTask(
       state,
@@ -38,31 +43,33 @@ const TasksSlice = createSlice({
         });
       }
     },
+    // setStatus(
+    //   state,
+    //   { payload: { cardId, color } }: PayloadAction<{ cardId: string; color: string }>,
+    // ) {
+    //   const cardIndex = state.cards.findIndex((card) => card.id === cardId);
+    //   state.cards[cardIndex].status = [{ color }];
+    // },
+
     removeTask(
       state,
-      {
-        payload: { cardId, taskId },
-      }: PayloadAction<{ cardId: string; taskId: string }>,
+      { payload: { cardId, taskId } }: PayloadAction<{ cardId: string; taskId: string }>,
     ) {
       const cardIndex = state.cards.findIndex((card) => card.id === cardId);
       if (cardIndex >= 0) {
-        state.cards[cardIndex].subTasks = state.cards[
-          cardIndex
-        ].subTasks.filter((task) => task.id !== taskId);
+        state.cards[cardIndex].subTasks = state.cards[cardIndex].subTasks.filter(
+          (task) => task.id !== taskId,
+        );
       }
     },
     toggleCompletedTask(
       state,
-      {
-        payload: { cardId, taskId },
-      }: PayloadAction<{ cardId: string; taskId: string }>,
+      { payload: { cardId, taskId } }: PayloadAction<{ cardId: string; taskId: string }>,
     ) {
       const cardIndex = state.cards.findIndex((card) => card.id === cardId);
 
       if (cardIndex >= 0) {
-        const taskIndex = state.cards[cardIndex].subTasks.findIndex(
-          (task) => task.id === taskId,
-        );
+        const taskIndex = state.cards[cardIndex].subTasks.findIndex((task) => task.id === taskId);
         if (taskIndex >= 0) {
           state.cards[cardIndex].subTasks[taskIndex].completed =
             !state.cards[cardIndex].subTasks[taskIndex].completed;
@@ -72,6 +79,5 @@ const TasksSlice = createSlice({
   },
 });
 
-export const { addCard, addTask, removeTask, toggleCompletedTask } =
-  TasksSlice.actions;
+export const { addCard, addTask, removeTask, toggleCompletedTask, deleteCard } = TasksSlice.actions;
 export default TasksSlice.reducer;

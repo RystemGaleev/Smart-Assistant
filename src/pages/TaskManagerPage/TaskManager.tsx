@@ -20,6 +20,7 @@ export const TaskManager = () => {
       <CustomModal toggleModal={toggleModal} modalVisible={modalVisible}>
         <Form toggleModal={toggleModal} />
       </CustomModal>
+
       <div className="taskManager">
         <div className="container">
           <div className="taskManager__controls">

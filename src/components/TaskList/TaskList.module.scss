@@ -1,6 +1,15 @@
 .list {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 14px;
-  margin-top: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    max-height: 500px;
+  }
 }
