@@ -23,7 +23,7 @@ export const TaskManager = () => {
 
       <div className="taskManager">
         <div className="container">
-          <div className="taskManager__controls">
+          <div className="taskManager__top">
             <h2 className="title">Task manager</h2>
             <UiButton onClick={toggleModal} size="md" variant="primary">
               Create task

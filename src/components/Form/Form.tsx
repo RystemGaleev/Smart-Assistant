@@ -3,10 +3,7 @@ import { useAppDispatch } from '../../hooks/reduxHooks';
 import { UiButton } from '../UI/UiButton/UiButton';
 import { addCard } from '../../redux/TaskSlice';
 import style from './Form.module.scss';
-
-interface IModalProps {
-  toggleModal: () => void;
-}
+import { IModalProps } from '../../Interfaces';
 
 export const Form = ({ toggleModal }: IModalProps) => {
   const dispatch = useAppDispatch();
@@ -33,14 +30,12 @@ export const Form = ({ toggleModal }: IModalProps) => {
     <form onSubmit={handleSubmit} className={style.form}>
       <div className={style.title}>Create new card</div>
       <div className={style.inputs}>
-        {error && error ? <p className={style.error}>{error}</p> : null}
+        {error && error && <p className={style.error}>{error}</p>}
         <div className={style.block}>
           <label htmlFor="title">Title</label>
           <input
             value={taskValue.title}
-            onChange={(e) =>
-              setTaskValue({ ...taskValue, title: e.target.value })
-            }
+            onChange={(e) => setTaskValue({ ...taskValue, title: e.target.value })}
             type="text"
             name="title"
             className={style.input}
@@ -50,9 +45,7 @@ export const Form = ({ toggleModal }: IModalProps) => {
           <label htmlFor="descr">Description</label>
           <textarea
             value={taskValue.description}
-            onChange={(e) =>
-              setTaskValue({ ...taskValue, description: e.target.value })
-            }
+            onChange={(e) => setTaskValue({ ...taskValue, description: e.target.value })}
             name="descr"
             className={style.textarea}
           />

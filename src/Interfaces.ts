@@ -3,7 +3,6 @@ export interface ICard {
   title: string;
   description: string;
   subTasks: ITask[];
-  status: IStatus[];
 }
 
 export interface ITask {
@@ -12,7 +11,14 @@ export interface ITask {
   completed: boolean;
 }
 
-export interface IStatus {
-  label?: string;
-  color: string;
+export interface IPost {
+  id?: string;
+  title: string;
+  description: string;
+  img?: string;
+  index?: number | string;
+}
+
+export interface IModalProps {
+  toggleModal: () => void;
 }

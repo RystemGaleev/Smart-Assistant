@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ICard, ITask } from '../Interfaces';
+import { ICard } from '../Interfaces';
 
 interface ITasksInterface {
   cards: ICard[];
@@ -21,9 +21,9 @@ const TasksSlice = createSlice({
         title,
         id: uuidv4(),
         subTasks: [],
-        status: [],
       });
     },
+
     deleteCard(state, { payload: id }) {
       const findCard = state.cards.filter((card) => card.id !== id);
       state.cards = findCard;

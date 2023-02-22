@@ -6,7 +6,8 @@
   background-color: var(--detail-color);
   border-right: 1px solid var(--pink-color);
   height: 100vh;
-  width: 230px;
+  width: 250px;
+  z-index: 1111;
   &::before {
     content: '';
     position: absolute;
@@ -19,7 +20,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   padding: 14px 18px;
 }
 .logo {
@@ -33,9 +34,13 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  background-color: transparent;
+  padding: 6px 14px;
 
   &.active {
-    color: var(--pink-color);
+    color: var(--white-color);
+    background-color: var(--pink-color);
+    border-radius: var(--rad);
   }
 }
 

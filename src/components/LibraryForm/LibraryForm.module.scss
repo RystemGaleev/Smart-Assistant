@@ -1,27 +1,19 @@
 .form {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  gap: 30px;
   width: 100%;
 }
 .title {
   font-size: 26px;
   font-weight: 600;
   color: var(--text-color);
-  margin-bottom: 30px;
-}
-
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  margin-bottom: 30px;
 }
 .block {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  label {
-    font-size: var(--fz-18);
-    font-weight: 400;
-  }
+  gap: 20px;
 }
 .error {
   font-size: var(--fz-16);
@@ -38,9 +30,6 @@
   height: 50px;
   border-radius: var(--rad);
   background-color: transparent;
-  &::placeholder {
-    color: var(--detail-color);
-  }
   &:focus,
   &:active {
     border-color: var(--pink-color);
@@ -58,9 +47,6 @@
   min-height: 140px;
   border-radius: var(--rad);
   background-color: transparent;
-  &::placeholder {
-    color: var(--detail-color);
-  }
   &:focus,
   &:active {
     border-color: var(--pink-color);

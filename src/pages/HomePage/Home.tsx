@@ -9,12 +9,11 @@ export const Home = () => {
           <div className="main__wrapper">
             <div className="main__info">
               <h1 className="main__title">
-                <span>Task helper</span> - Your assistant for comfortable work
-                div
+                <span>Smart Assistant </span> - Your assistant for comfortable work
               </h1>
               <div className="main__descr">
-                All the necessary packages and libraries are always at hand,
-                create and plan tasks, track them as they are completed
+                All the necessary packages and libraries are always at hand, create and plan tasks,
+                track them as they are completed
               </div>
             </div>
           </div>
