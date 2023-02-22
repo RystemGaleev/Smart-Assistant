@@ -3,22 +3,25 @@ import { useAppDispatch } from '../../hooks/reduxHooks';
 import { UiButton } from '../UI/UiButton/UiButton';
 import { addCard } from '../../redux/TaskSlice';
 import style from './Form.module.scss';
-import { IModalProps } from '../../Interfaces';
+import { ICard, IModalProps } from '../../Interfaces';
 
 export const Form = ({ toggleModal }: IModalProps) => {
   const dispatch = useAppDispatch();
   const [error, setError] = useState('');
-  const [taskValue, setTaskValue] = useState({
+  const [taskValue, setTaskValue] = useState<ICard>({
     title: '',
     description: '',
+    status: 'unknown',
+    id: '',
+    subTasks: [],
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { title, description } = taskValue;
+    const { title, description, status } = taskValue;
     if (title.trim() !== '' && description.trim() !== '') {
       dispatch(addCard(taskValue));
-      setTaskValue({ title: '', description: '' });
+      setTaskValue({ title: '', description: '', status: 'unknown', id: '', subTasks: [] });
       toggleModal();
       setError('');
     } else {

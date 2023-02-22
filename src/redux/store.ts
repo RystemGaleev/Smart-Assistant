@@ -2,16 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import TaskReducer from './TaskSlice';
 import LibraryReducer from './LibrarySlice';
 
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PERSIST,
-  PAUSE,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PERSIST, PAUSE, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({

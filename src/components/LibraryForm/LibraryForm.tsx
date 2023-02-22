@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { IModalProps } from '../../Interfaces';
 import { addPost } from '../../redux/LibrarySlice';
@@ -7,6 +7,7 @@ import style from './LibraryForm.module.scss';
 
 export const LibraryForm = ({ toggleModal }: IModalProps) => {
   const dispatch = useAppDispatch();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState('');
   const [postValue, setPostValue] = useState({
@@ -21,6 +22,9 @@ export const LibraryForm = ({ toggleModal }: IModalProps) => {
     if (title.trim() !== '' && description.trim() !== '') {
       dispatch(addPost(postValue));
       setPostValue({ title: '', description: '', img: '' });
+      if (inputRef && inputRef.current) {
+        inputRef.current.value = '';
+      }
       toggleModal();
       setError('');
     } else {
@@ -58,7 +62,12 @@ export const LibraryForm = ({ toggleModal }: IModalProps) => {
           name="descr"
           placeholder="Description"
         />
-        <input accept=".jpg,.jpeg,.png" type="file" onChange={(e) => convertFile(e.target.files)} />
+        <input
+          ref={inputRef}
+          accept=".jpg,.jpeg,.png"
+          type="file"
+          onChange={(e) => convertFile(e.target.files)}
+        />
       </div>
       <UiButton variant="primary" size="md">
         Create
@@ -66,6 +75,3 @@ export const LibraryForm = ({ toggleModal }: IModalProps) => {
     </form>
   );
 };
-function useRef(arg0: null) {
-  throw new Error('Function not implemented.');
-}

@@ -15,12 +15,7 @@ const LibrarySlice = createSlice({
   initialState,
   reducers: {
     addPost(state, { payload: { description, title, img } }: PayloadAction<IPost>) {
-      state.posts.push({
-        description,
-        title,
-        img,
-        id: uuidv4(),
-      });
+      state.posts.push({ description, title, img, id: uuidv4() });
     },
     deletePost(state, { payload: { id } }: PayloadAction<{ id: string }>) {
       state.posts = state.posts.filter((post) => post.id !== id);

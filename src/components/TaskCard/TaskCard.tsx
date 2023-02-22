@@ -1,15 +1,15 @@
 import { useRef, useState, useEffect } from 'react';
 import { IoChevronForward, IoSettingsOutline, IoAddOutline } from 'react-icons/io5';
-import { useAppDispatch } from '../../hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { ICard } from '../../Interfaces';
-import { addTask } from '../../redux/TaskSlice';
+import { addTask, updateColor, updateStatus } from '../../redux/TaskSlice';
 import { CurrentCard } from '../CurrentCard/CurrentCard';
 import { CustomModal } from '../CustomModal/CustomModal';
 import { TaskList } from '../TaskList/TaskList';
 import { UiButton } from '../UI/UiButton/UiButton';
 import style from './TaskCard.module.scss';
 
-export const TaskCard = ({ description, title, subTasks, id }: ICard) => {
+export const TaskCard = ({ description, title, subTasks, id, status }: ICard) => {
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
   const [showInput, setShowInput] = useState(false);
@@ -20,7 +20,46 @@ export const TaskCard = ({ description, title, subTasks, id }: ICard) => {
   });
   const [textValue, setTextValue] = useState({
     description: '',
+    status: '',
   });
+  // const { cards } = useAppSelector((state) => state.board);
+  // const card = cards.find((card) => card.id === id);
+  // const currentStatus = card?.status;
+
+  const [color, setColor] = useState('#2773e5');
+  const [newStatus, setNewStatus] = useState('unknown');
+
+  const setStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setNewStatus(e.target.value);
+    dispatch(updateStatus({ cardId: id, status: e.target.value as ICard['status'] }));
+  };
+
+  // useEffect(() => {
+  //   switch (newStatus) {
+  //     case 'Not urgent':
+  //       dispatch(updateColor({ cardId: id, color: '#2773e5' }));
+  //       setColor('#2773e5');
+  //       break;
+  //     case 'Simple':
+  //       dispatch(updateColor({ cardId: id, color: '#f5222d' }));
+  //       setColor('#f5222d');
+  //       break;
+  //     case 'Critical':
+  //       dispatch(updateColor({ cardId: id, color: '#fdd835' }));
+  //       setColor('#fdd835');
+  //       break;
+  //     case 'Waiting':
+  //       dispatch(updateColor({ cardId: id, color: '#fdae6b' }));
+  //       setColor('#fdae6b');
+  //       break;
+  //     case 'Completed':
+  //       dispatch(updateColor({ cardId: id, color: '#fd8d3c' }));
+  //       setColor('#fd8d3c');
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }, [setStatus]);
 
   useEffect(() => {
     if (showInput) {
@@ -36,7 +75,7 @@ export const TaskCard = ({ description, title, subTasks, id }: ICard) => {
     if (textValue.description.trim() !== '') {
       dispatch(addTask({ cardId: id, taskDescription: textValue.description }));
       setShowInput(false);
-      setTextValue({ description: '' });
+      setTextValue({ description: '', status: '' });
     }
   };
 
@@ -54,44 +93,41 @@ export const TaskCard = ({ description, title, subTasks, id }: ICard) => {
   return (
     <>
       <CustomModal toggleModal={showModal} modalVisible={isOpen}>
-        <CurrentCard title={title} id={id} />
+        <CurrentCard
+          newStatus={newStatus}
+          setStatus={setStatus}
+          setNewStatus={setNewStatus}
+          description={description}
+          title={title}
+          id={id}
+        />
       </CustomModal>
       <div className={style.card}>
         <div className={style.content}>
           <div className={style.top}>
-            <div className={style.title}>{title}</div>
+            <div className={style.block}>
+              <div className={style.title}>{title}</div>
+              <div style={{ backgroundColor: color }} className={style.status}>
+                {status}
+              </div>
+            </div>
 
             <div className={style.tools}>
               <IoChevronForward
                 onClick={toggleText}
-                className={
-                  isVisible.text
-                    ? `${style.icon} ${style.text}`
-                    : `${style.icon} ${style.text} ${style.rotate}`
-                }
+                className={isVisible.text ? `${style.icon} ${style.text}` : `${style.icon} ${style.text} ${style.rotate}`}
                 size={26}
               />
-              <IoSettingsOutline
-                onClick={showModal}
-                className={`${style.settings} ${style.icon}`}
-                size={26}
-              />
+              <IoSettingsOutline onClick={showModal} className={`${style.settings} ${style.icon}`} size={26} />
             </div>
           </div>
-          <div className={isVisible.text ? `${style.descr} ${style.show}` : `${style.descr}`}>
-            {description}
-          </div>
+          <div className={isVisible.text ? `${style.descr} ${style.show}` : `${style.descr}`}>{description}</div>
           <div className={style.progress_bar}>
             <div style={{ width: `${percentage}%` }} className={style.progress}></div>
           </div>
           <form onSubmit={handleSubmit} className={style.form_task}>
             <div className={style.btns}>
-              <UiButton
-                type="button"
-                onClick={() => setShowInput(!showInput)}
-                size="sm"
-                variant="primary"
-              >
+              <UiButton type="button" onClick={() => setShowInput(!showInput)} size="sm" variant="primary">
                 +Add task
               </UiButton>
               <UiButton type="button" onClick={toggleTaskList} size="sm" variant="primary">
@@ -99,9 +135,7 @@ export const TaskCard = ({ description, title, subTasks, id }: ICard) => {
               </UiButton>
             </div>
 
-            <div
-              className={showInput ? `${style.input_block} ${style.show}` : `${style.input_block}`}
-            >
+            <div className={showInput ? `${style.input_block} ${style.show}` : `${style.input_block}`}>
               <input
                 className={style.input_task}
                 value={textValue.description}
@@ -111,10 +145,7 @@ export const TaskCard = ({ description, title, subTasks, id }: ICard) => {
                 placeholder="Write new task..."
               />
               <button className={style.add}>
-                <IoAddOutline
-                  size={30}
-                  className={showInput ? `${style.plus} ${style.show}` : `${style.plus}`}
-                />
+                <IoAddOutline size={30} className={showInput ? `${style.plus} ${style.show}` : `${style.plus}`} />
               </button>
             </div>
           </form>
