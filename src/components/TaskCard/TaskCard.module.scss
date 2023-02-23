@@ -24,7 +24,7 @@
 
 .title {
   font-size: var(--fz-20);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-color);
   word-break: break-word;
   overflow: hidden;
@@ -35,7 +35,7 @@
 
 .descr {
   font-size: var(--fz-18);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text-color);
   line-height: 24px;
   opacity: 0;
@@ -62,7 +62,8 @@
 }
 .status {
   font-size: 20px;
-  font-weight: 500;
+  width: 160px;
+  font-weight: 600;
   color: var(--white-color);
   border: none;
   padding: 12px 16px;

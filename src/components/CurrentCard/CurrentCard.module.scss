@@ -4,16 +4,27 @@
   gap: 40px;
   width: 100%;
 }
-
+.top {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  gap: 40px;
+  justify-content: space-between;
+}
+.icon {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
 .title {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text-color);
   word-break: break-word;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 500px;
+  max-width: 480px;
 }
 .description {
   font-size: 16px;
@@ -21,7 +32,7 @@
   line-height: 24px;
   color: var(--text-color);
   word-break: break-word;
-  max-height: 500px;
+  max-height: 480px;
   overflow: auto;
   &::-webkit-scrollbar {
     width: 6px; /* ширина scrollbar */

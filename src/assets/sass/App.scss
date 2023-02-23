@@ -24,3 +24,10 @@ ul,
 li {
   list-style: none;
 }
+
+.error-message {
+  font-size: var(--fz-18);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #f53232;
+}

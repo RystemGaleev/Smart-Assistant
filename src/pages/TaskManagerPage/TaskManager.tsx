@@ -1,18 +1,46 @@
 import { ChangeEvent, useState } from 'react';
-import { CustomModal } from '../../components/UI/CustomModal/CustomModal';
-import { Form } from '../../components/Form/Form';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { addCard } from '../../redux/TaskSlice';
+
 import { TaskCard } from '../../components/TaskCard/TaskCard';
 import { StatusSelect } from '../../components/UI/Select/StatusSelect';
 import { UiButton } from '../../components/UI/UiButton/UiButton';
-import { useAppSelector } from '../../hooks/reduxHooks';
-import { ICard } from '../../Interfaces';
+import { CustomModal } from '../../components/UI/CustomModal/CustomModal';
+import { CustomForm } from '../../components/UI/CustomForm/CustomForm';
+import { CustomInput } from '../../components/UI/CustomInput/CustomInput';
+import { CustomTextarea } from '../../components/UI/CustomTextarea/CustomTextarea';
+
 import { Layout } from '../../Layout/Layout';
+import { ICard } from '../../Interfaces';
 import './TaskManager.scss';
 
 export const TaskManager = () => {
+  const { cards } = useAppSelector((state) => state.board);
+  const dispatch = useAppDispatch();
   const [modalVisible, setModalVisible] = useState(false);
   const [filterStatus, setFilterStatus] = useState<ICard['status']>('All');
-  const { cards } = useAppSelector((state) => state.board);
+  const [error, setError] = useState('');
+  const [taskValue, setTaskValue] = useState<ICard>({
+    title: '',
+    description: '',
+    status: 'Not urgent',
+    id: '',
+    subTasks: [],
+    color: '#2773e5',
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { title, description } = taskValue;
+    if (title.trim() !== '' && description.trim() !== '') {
+      dispatch(addCard(taskValue));
+      setTaskValue({ title: '', description: '', status: 'Not urgent', color: '#2773e5', id: '', subTasks: [] });
+      toggleModal();
+      setError('');
+    } else {
+      setError('Please fill in all fields');
+    }
+  };
 
   const filteredStatus = (status: ICard['status']) => (card: any) => {
     if (status === 'Not urgent') {
@@ -48,10 +76,32 @@ export const TaskManager = () => {
   return (
     <Layout>
       <CustomModal toggleModal={toggleModal} modalVisible={modalVisible}>
-        <Form toggleModal={toggleModal} />
+        <CustomForm handleSubmit={handleSubmit} title={'Create new card'}>
+          <>
+            {error && error && <p className="error-message">{error}</p>}
+            <CustomInput
+              value={taskValue.title}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setTaskValue({ ...taskValue, title: e.target.value })}
+              type="text"
+              name="title"
+              placeholder="Title"
+              className="input"
+            />
+            <CustomTextarea
+              value={taskValue.description}
+              onChange={(e) => setTaskValue({ ...taskValue, description: e.target.value })}
+              name="descr"
+              className="textarea"
+              placeholder="Description"
+            />
+            <UiButton size="md" variant="primary">
+              Create
+            </UiButton>
+          </>
+        </CustomForm>
       </CustomModal>
 
-      <div className="taskManager">
+      <section className="taskManager">
         <div className="container">
           <div className="taskManager__top">
             <h2 className="title">Task manager</h2>
@@ -68,7 +118,7 @@ export const TaskManager = () => {
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };

@@ -1,14 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import style from './SideBar.module.scss';
-import {
-  IoListOutline,
-  IoHomeOutline,
-  IoLibraryOutline,
-} from 'react-icons/io5';
-import { WiDayLightWind, WiDayFog } from 'react-icons/wi';
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
+
 import { Logo } from '../UI/Logo';
+import { IoListOutline, IoHomeOutline, IoLibraryOutline } from 'react-icons/io5';
+import { WiDayLightWind, WiDayFog } from 'react-icons/wi';
+import style from './SideBar.module.scss';
 
 const NavigationLink = [
   {
@@ -44,9 +41,7 @@ export const SideBar = () => {
           <NavLink
             key={link.path}
             to={link.path}
-            className={({ isActive }) =>
-              isActive ? `${style.link} ${style.active}` : style.link
-            }
+            className={({ isActive }) => (isActive ? `${style.link} ${style.active}` : style.link)}
           >
             {link.title}
             {link.icon}

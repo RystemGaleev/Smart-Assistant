@@ -30,6 +30,14 @@ const TasksSlice = createSlice({
       const cardIndex = state.cards.findIndex((card) => card.id === cardId);
       state.cards[cardIndex].status = status;
     },
+    updateTitle(state, { payload: { cardId, newTitle } }: PayloadAction<{ cardId: string; newTitle: string }>) {
+      const cardIndex = state.cards.findIndex((card) => card.id === cardId);
+      state.cards[cardIndex].title = newTitle;
+    },
+    updateDescription(state, { payload: { cardId, newDescription } }: PayloadAction<{ cardId: string; newDescription: string }>) {
+      const cardIndex = state.cards.findIndex((card) => card.id === cardId);
+      state.cards[cardIndex].description = newDescription;
+    },
 
     updateColor(state, { payload: { cardId, color } }: PayloadAction<{ cardId: string; color: ICard['color'] }>) {
       const cardIndex = state.cards.findIndex((card) => card.id === cardId);
@@ -68,5 +76,15 @@ const TasksSlice = createSlice({
   },
 });
 
-export const { addCard, updateStatus, updateColor, addTask, removeTask, toggleCompletedTask, deleteCard } = TasksSlice.actions;
+export const {
+  addCard,
+  deleteCard,
+  updateStatus,
+  updateColor,
+  updateTitle,
+  updateDescription,
+  addTask,
+  removeTask,
+  toggleCompletedTask,
+} = TasksSlice.actions;
 export default TasksSlice.reducer;

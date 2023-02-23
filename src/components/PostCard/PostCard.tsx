@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { IoEllipsisVerticalOutline, IoExpandOutline, IoCloseOutline } from 'react-icons/io5';
+import { deletePost } from '../../redux/LibrarySlice';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useDropDown } from '../../hooks/useDropDown';
-import { IPost } from '../../Interfaces';
-import { deletePost } from '../../redux/LibrarySlice';
-import { CustomModal } from '../UI/CustomModal/CustomModal';
+
 import { PostFullView } from '../PostFullView/PostFullView';
+import { CustomModal } from '../UI/CustomModal/CustomModal';
 import { DropDown } from '../UI/DropDown/DropDown';
+
+import { IoEllipsisVerticalOutline, IoExpandOutline, IoCloseOutline } from 'react-icons/io5';
+import { IPost } from '../../Interfaces';
 import style from './PostCard.module.scss';
-// IoCreateOutline IoEllipsisVerticalOutline
+
 export const PostCard = (props: IPost) => {
   const dispatch = useAppDispatch();
   const [postVisible, setPostVisible] = useState(false);

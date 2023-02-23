@@ -27,8 +27,6 @@ body[data-theme='light'] {
   --accent-color: var(--pink-color);
   --detail-color: var(--dark-color);
   --opacity-color: var(--white-opacity-color);
-  //   --detail-color: var(--black-color);
-  //   --accent-color: var(--yellow-color);
 }
 body[data-theme='dark'] {
   --bg-color: var(--white-color);
@@ -36,19 +34,10 @@ body[data-theme='dark'] {
   --accent-color: var(--dark-color);
   --detail-color: var(--light-color);
   --opacity-color: var(--black-opacity-color);
-
-  //   --detail-color: var(--white-color);
-  //   --accent-color: var(--red-color);
 }
 
 .title {
   font-size: 32px;
   font-weight: 600;
   color: var(--pink-color);
-  &__h2 {
-  }
-  &__h3 {
-  }
-  &__h4 {
-  }
 }

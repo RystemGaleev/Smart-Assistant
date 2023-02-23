@@ -1,12 +1,14 @@
 import { useRef, useState, useEffect } from 'react';
-import { IoChevronForward, IoSettingsOutline, IoAddOutline } from 'react-icons/io5';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { ICard } from '../../Interfaces';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { addTask, updateColor, updateStatus } from '../../redux/TaskSlice';
+
 import { CurrentCard } from '../CurrentCard/CurrentCard';
 import { CustomModal } from '../UI/CustomModal/CustomModal';
 import { TaskList } from '../TaskList/TaskList';
 import { UiButton } from '../UI/UiButton/UiButton';
+
+import { IoChevronForward, IoSettingsOutline, IoAddOutline } from 'react-icons/io5';
+import { ICard } from '../../Interfaces';
 import style from './TaskCard.module.scss';
 
 export const TaskCard = ({ description, title, subTasks, id, status }: ICard) => {
