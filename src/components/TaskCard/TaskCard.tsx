@@ -14,61 +14,52 @@ export const TaskCard = ({ description, title, subTasks, id, status }: ICard) =>
   const inputRef = useRef<HTMLInputElement>(null);
   const [showInput, setShowInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState({
-    text: false,
-    taskList: false,
-  });
-  const [textValue, setTextValue] = useState({
-    description: '',
-    status: '',
-  });
-  // const { cards } = useAppSelector((state) => state.board);
-  // const card = cards.find((card) => card.id === id);
-  // const currentStatus = card?.status;
-
+  const [isVisible, setIsVisible] = useState({ text: false, taskList: false });
   const [color, setColor] = useState('#2773e5');
-  const [newStatus, setNewStatus] = useState('unknown');
+  const [textValue, setTextValue] = useState({ description: '', status: 'unknown' });
+  const completedTask = subTasks.filter((task) => task.completed);
+  const percentage = Math.floor((completedTask.length / subTasks.length) * 100);
 
   const setStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setNewStatus(e.target.value);
     dispatch(updateStatus({ cardId: id, status: e.target.value as ICard['status'] }));
   };
 
-  // useEffect(() => {
-  //   switch (newStatus) {
-  //     case 'Not urgent':
-  //       dispatch(updateColor({ cardId: id, color: '#2773e5' }));
-  //       setColor('#2773e5');
-  //       break;
-  //     case 'Simple':
-  //       dispatch(updateColor({ cardId: id, color: '#f5222d' }));
-  //       setColor('#f5222d');
-  //       break;
-  //     case 'Critical':
-  //       dispatch(updateColor({ cardId: id, color: '#fdd835' }));
-  //       setColor('#fdd835');
-  //       break;
-  //     case 'Waiting':
-  //       dispatch(updateColor({ cardId: id, color: '#fdae6b' }));
-  //       setColor('#fdae6b');
-  //       break;
-  //     case 'Completed':
-  //       dispatch(updateColor({ cardId: id, color: '#fd8d3c' }));
-  //       setColor('#fd8d3c');
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }, [setStatus]);
+  useEffect(() => {
+    switch (status) {
+      case 'Not urgent':
+        dispatch(updateColor({ cardId: id, color: '#2773e5' }));
+        setColor('#2773e5');
+        break;
+      case 'Simple':
+        dispatch(updateColor({ cardId: id, color: '#b97521' }));
+        setColor('#b97521');
+        break;
+      case 'Critical':
+        dispatch(updateColor({ cardId: id, color: '#b92121' }));
+        setColor('#b92121');
+        break;
+      case 'Waiting':
+        dispatch(updateColor({ cardId: id, color: '#727272' }));
+        setColor('#727272');
+        break;
+      case 'Completed':
+        dispatch(updateColor({ cardId: id, color: '#21b95d' }));
+        setColor('#21b95d');
+        break;
+      case 'Other':
+        dispatch(updateColor({ cardId: id, color: '#8327d7' }));
+        setColor('#8327d7');
+        break;
+      default:
+        break;
+    }
+  }, [setStatus]);
 
   useEffect(() => {
     if (showInput) {
       inputRef.current?.focus();
     }
   }, [showInput]);
-
-  const completedTask = subTasks.filter((task) => task.completed);
-  const percentage = Math.floor((completedTask.length / subTasks.length) * 100);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -94,9 +85,9 @@ export const TaskCard = ({ description, title, subTasks, id, status }: ICard) =>
     <>
       <CustomModal toggleModal={showModal} modalVisible={isOpen}>
         <CurrentCard
-          newStatus={newStatus}
+          status={status}
           setStatus={setStatus}
-          setNewStatus={setNewStatus}
+          setTextValue={setTextValue}
           description={description}
           title={title}
           id={id}

@@ -9,6 +9,7 @@
   font-weight: 400;
   color: var(--text-color);
   word-break: break-word;
+  max-width: 400px;
   &.completed {
     color: var(--opacity-color);
     text-decoration: line-through;
@@ -38,25 +39,19 @@
 }
 
 .checkbox {
+  position: relative;
   -webkit-appearance: none;
   width: 30px;
   height: 30px;
   border: 1px solid var(--text-color);
   border-radius: 1px;
-  vertical-align: sub;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 40px;
   outline: none;
   border-radius: var(--rad);
   color: var(--text-color);
   cursor: pointer;
-
   &:checked {
     background-color: var(--pink-color);
     border-color: var(--detail-color);
-
     &:focus,
     &:hover {
       box-shadow: 1px 1px 6px 2px var(--pink-color);
