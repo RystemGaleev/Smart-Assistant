@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { ICard } from '../../Interfaces';
 import { addTask, updateColor, updateStatus } from '../../redux/TaskSlice';
 import { CurrentCard } from '../CurrentCard/CurrentCard';
-import { CustomModal } from '../CustomModal/CustomModal';
+import { CustomModal } from '../UI/CustomModal/CustomModal';
 import { TaskList } from '../TaskList/TaskList';
 import { UiButton } from '../UI/UiButton/UiButton';
 import style from './TaskCard.module.scss';

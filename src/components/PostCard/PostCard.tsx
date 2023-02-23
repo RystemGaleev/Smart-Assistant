@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useDropDown } from '../../hooks/useDropDown';
 import { IPost } from '../../Interfaces';
 import { deletePost } from '../../redux/LibrarySlice';
-import { CustomModal } from '../CustomModal/CustomModal';
+import { CustomModal } from '../UI/CustomModal/CustomModal';
 import { PostFullView } from '../PostFullView/PostFullView';
 import { DropDown } from '../UI/DropDown/DropDown';
 import style from './PostCard.module.scss';

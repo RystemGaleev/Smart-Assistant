@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { CustomModal } from '../../components/CustomModal/CustomModal';
+import { CustomModal } from '../../components/UI/CustomModal/CustomModal';
 import { Form } from '../../components/Form/Form';
 import { TaskCard } from '../../components/TaskCard/TaskCard';
 import { StatusSelect } from '../../components/UI/Select/StatusSelect';
@@ -11,8 +11,8 @@ import './TaskManager.scss';
 
 export const TaskManager = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const { cards } = useAppSelector((state) => state.board);
   const [filterStatus, setFilterStatus] = useState<ICard['status']>('All');
+  const { cards } = useAppSelector((state) => state.board);
 
   const filteredStatus = (status: ICard['status']) => (card: any) => {
     if (status === 'Not urgent') {

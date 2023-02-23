@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CustomModal } from '../../components/CustomModal/CustomModal';
+import { CustomModal } from '../../components/UI/CustomModal/CustomModal';
 import { LibraryForm } from '../../components/LibraryForm/LibraryForm';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { PostFullView } from '../../components/PostFullView/PostFullView';

@@ -2,6 +2,8 @@ import { useState, useRef } from 'react';
 import { useAppDispatch } from '../../hooks/reduxHooks';
 import { IModalProps } from '../../Interfaces';
 import { addPost } from '../../redux/LibrarySlice';
+import { CustomInput } from '../UI/CustomInput/CustomInput';
+import { CustomTextarea } from '../UI/CustomTextarea/CustomTextarea';
 import { UiButton } from '../UI/UiButton/UiButton';
 import style from './LibraryForm.module.scss';
 
@@ -47,27 +49,22 @@ export const LibraryForm = ({ toggleModal }: IModalProps) => {
       <div className={style.title}>Create new post</div>
       {error && error && <p className={style.error}>{error}</p>}
       <div className={style.block}>
-        <input
-          className={style.input}
+        <CustomInput
           value={postValue.title}
           onChange={(e) => setPostValue({ ...postValue, title: e.target.value })}
           name="title"
           type="text"
           placeholder="Title"
+          className="input"
         />
-        <textarea
-          className={style.textarea}
+        <CustomTextarea
           value={postValue.description}
           onChange={(e) => setPostValue({ ...postValue, description: e.target.value })}
           name="descr"
           placeholder="Description"
+          className="textarea"
         />
-        <input
-          ref={inputRef}
-          accept=".jpg,.jpeg,.png"
-          type="file"
-          onChange={(e) => convertFile(e.target.files)}
-        />
+        <CustomInput customRef={inputRef} accept=".jpg,.jpeg,.png" type="file" onChange={(e) => convertFile(e.target.files)} />
       </div>
       <UiButton variant="primary" size="md">
         Create
