@@ -4,7 +4,6 @@ import style from './PostFullView.module.scss';
 export const PostFullView = ({ title, description, index, img }: IPost) => {
   return (
     <div className={style.post}>
-      <div className={style.num}>{index}</div>
       <div className={style.title}>{title}</div>
       {img ? (
         <div className={style.img}>

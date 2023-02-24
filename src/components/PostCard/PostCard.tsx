@@ -26,10 +26,6 @@ export const PostCard = (props: IPost) => {
     setPostVisible((prev) => !prev);
     setIsDrop(false);
   };
-  const dropDownList = [
-    { label: 'Delete', icon: <IoCloseOutline onClick={deleteCurrentPost} size={26} /> },
-    { label: 'View', icon: <IoExpandOutline onClick={showPost} size={26} /> },
-  ];
 
   return (
     <>
@@ -38,8 +34,7 @@ export const PostCard = (props: IPost) => {
       </CustomModal>
       <div className={style.post}>
         <div className={style.content}>
-          <div className={style.num}>{index}</div>
-          <div className={style.block}>
+          <div className={img ? `${style.block} ` : `${style.block} ${style.full}`}>
             <div className={style.title}>{title}</div>
             <div className={style.description}>{description}</div>
           </div>
@@ -53,12 +48,14 @@ export const PostCard = (props: IPost) => {
           <IoEllipsisVerticalOutline onClick={toggleDropDown} className={style.drop} size={30} />
           <DropDown isDrop={isDrop}>
             <div className={style.drop_menu}>
-              {dropDownList.map((item) => (
-                <div key={item.label} className={style.drop_item}>
-                  {item.label}
-                  {item.icon}
-                </div>
-              ))}
+              <div onClick={deleteCurrentPost} className={style.drop_item}>
+                Delete
+                <IoCloseOutline size={26} />
+              </div>
+              <div onClick={showPost} className={style.drop_item}>
+                View
+                <IoExpandOutline size={26} />
+              </div>
             </div>
           </DropDown>
         </div>

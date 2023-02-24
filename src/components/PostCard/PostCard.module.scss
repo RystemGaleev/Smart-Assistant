@@ -15,28 +15,15 @@
   justify-content: space-between;
   gap: 40px;
 }
-.num {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid var(--pink-color);
-  transform: translateX(-50%);
-  font-size: var(--fz-20);
-  font-weight: 400;
-  color: var(--pink-color);
-}
+
 .block {
-  max-width: 670px;
-  padding-top: 20px;
+  max-width: 640px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  &.full {
+    max-width: 100%;
+  }
 }
 .title {
   font-size: var(--fz-22);
@@ -80,16 +67,16 @@
   .drop_menu {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
     padding: 14px 16px;
-    width: 200px;
+    width: 240px;
   }
   .drop_item {
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: space-between;
-    font-size: var(--fz-18);
+    font-size: var(--fz-20);
     font-weight: 500;
     color: var(--detail-color);
     cursor: pointer;

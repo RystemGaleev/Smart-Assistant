@@ -11,6 +11,9 @@ import { CustomTextarea } from '../../components/UI/CustomTextarea/CustomTextare
 
 import { Layout } from '../../Layout/Layout';
 import './Library.scss';
+import { Search } from '../../components/UI/Search/Search';
+import { useDebounce } from '../../hooks/useDebounce';
+import { filterItems } from '../../Utils';
 
 export const Library = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +22,9 @@ export const Library = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState('');
   const [postValue, setPostValue] = useState({ title: '', description: '', img: '' });
+
+  const [searchValue, setSearchValue] = useState('');
+  const debouncedValue = useDebounce(searchValue, 1500);
 
   const toggleModal = () => setIsOpen((prev) => !prev);
 
@@ -87,12 +93,15 @@ export const Library = () => {
         <div className="container">
           <div className="library__top">
             <h2 className="title">Library</h2>
-            <UiButton onClick={toggleModal} size="md" variant="primary">
-              Create post
-            </UiButton>
+            <div className="library__tools">
+              <Search setSearchValue={setSearchValue} searchValue={searchValue} />
+              <UiButton onClick={toggleModal} size="md" variant="primary">
+                Create post
+              </UiButton>
+            </div>
           </div>
           <div className="library__wrapper">
-            {posts?.map((post, index) => (
+            {filterItems(posts, debouncedValue)?.map((post, index) => (
               <PostCard key={post.id} {...post} index={index + 1} />
             ))}
           </div>
