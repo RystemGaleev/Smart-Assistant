@@ -15,7 +15,7 @@ export const PostCard = (props: IPost) => {
   const dispatch = useAppDispatch();
   const [postVisible, setPostVisible] = useState(false);
   const { toggleDropDown, isDrop, setIsDrop } = useDropDown();
-  const { title, description, index, img, id } = props;
+  const { title, description, img, id } = props;
 
   const deleteCurrentPost = () => {
     if (id) {

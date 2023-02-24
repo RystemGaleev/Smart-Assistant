@@ -10,8 +10,10 @@ import { CustomForm } from '../../components/UI/CustomForm/CustomForm';
 import { CustomInput } from '../../components/UI/CustomInput/CustomInput';
 import { CustomTextarea } from '../../components/UI/CustomTextarea/CustomTextarea';
 
+import { motion } from 'framer-motion';
 import { Layout } from '../../Layout/Layout';
 import { ICard } from '../../Interfaces';
+import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import './TaskManager.scss';
 
 export const TaskManager = () => {
@@ -101,7 +103,14 @@ export const TaskManager = () => {
         </CustomForm>
       </CustomModal>
 
-      <section className="taskManager">
+      <motion.section
+        className="taskManager"
+        initial="exit"
+        animate="show"
+        exit="exit"
+        transition={PageTranstition}
+        variants={AnimationPage}
+      >
         <div className="container">
           <div className="taskManager__top">
             <h2 className="title">Task manager</h2>
@@ -113,12 +122,12 @@ export const TaskManager = () => {
             </div>
           </div>
           <div className="taskManager__wrapper">
-            {cards?.filter(filteredStatus(filterStatus)).map((card) => (
+            {cards?.filter(filteredStatus(filterStatus)).map((card, index) => (
               <TaskCard key={card.id} {...card} />
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
     </Layout>
   );
 };

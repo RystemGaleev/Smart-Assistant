@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { useDebounce } from '../../hooks/useDebounce';
+import { filterItems } from '../../Utils';
 
+import { Search } from '../../components/UI/Search/Search';
 import { addPost } from '../../redux/LibrarySlice';
 import { PostCard } from '../../components/PostCard/PostCard';
 import { UiButton } from '../../components/UI/UiButton/UiButton';
@@ -9,11 +12,10 @@ import { CustomForm } from '../../components/UI/CustomForm/CustomForm';
 import { CustomInput } from '../../components/UI/CustomInput/CustomInput';
 import { CustomTextarea } from '../../components/UI/CustomTextarea/CustomTextarea';
 
+import { motion } from 'framer-motion';
+import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import { Layout } from '../../Layout/Layout';
 import './Library.scss';
-import { Search } from '../../components/UI/Search/Search';
-import { useDebounce } from '../../hooks/useDebounce';
-import { filterItems } from '../../Utils';
 
 export const Library = () => {
   const dispatch = useAppDispatch();
@@ -89,7 +91,14 @@ export const Library = () => {
         </CustomForm>
       </CustomModal>
 
-      <section className="library">
+      <motion.section
+        className="library"
+        initial="exit"
+        animate="show"
+        exit="exit"
+        transition={PageTranstition}
+        variants={AnimationPage}
+      >
         <div className="container">
           <div className="library__top">
             <h2 className="title">Library</h2>
@@ -106,7 +115,7 @@ export const Library = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
     </Layout>
   );
 };

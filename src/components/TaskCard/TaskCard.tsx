@@ -7,6 +7,7 @@ import { CustomModal } from '../UI/CustomModal/CustomModal';
 import { TaskList } from '../TaskList/TaskList';
 import { UiButton } from '../UI/UiButton/UiButton';
 
+import { motion } from 'framer-motion';
 import { IoChevronForward, IoSettingsOutline, IoAddOutline } from 'react-icons/io5';
 import { ICard } from '../../Interfaces';
 import style from './TaskCard.module.scss';
@@ -95,7 +96,7 @@ export const TaskCard = ({ description, title, subTasks, id, status }: ICard) =>
           id={id}
         />
       </CustomModal>
-      <div className={style.card}>
+      <motion.div className={style.card}>
         <div className={style.content}>
           <div className={style.top}>
             <div className={style.block}>
@@ -144,7 +145,7 @@ export const TaskCard = ({ description, title, subTasks, id, status }: ICard) =>
           </form>
           <TaskList subTasks={subTasks} cardId={id} isVisible={isVisible.taskList} />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
