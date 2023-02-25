@@ -11,6 +11,7 @@ export const Search = ({ searchValue, setSearchValue }: SearchProps) => {
   const clearSearch = () => {
     setSearchValue('');
   };
+
   return (
     <div className={style.block}>
       <input

@@ -27,6 +27,7 @@ export const Library = () => {
 
   const [searchValue, setSearchValue] = useState('');
   const debouncedValue = useDebounce(searchValue, 1500);
+  const filteredPosts = filterItems(posts, debouncedValue);
 
   const toggleModal = () => setIsOpen((prev) => !prev);
 
@@ -110,9 +111,11 @@ export const Library = () => {
             </div>
           </div>
           <div className="library__wrapper">
-            {filterItems(posts, debouncedValue)?.map((post, index) => (
-              <PostCard key={post.id} {...post} index={index + 1} />
-            ))}
+            {filteredPosts.length ? (
+              filteredPosts?.map((post, index) => <PostCard key={post.id} {...post} index={index + 1} />)
+            ) : (
+              <div className="library__error">Unfortunately nothing was found :(</div>
+            )}
           </div>
         </div>
       </motion.section>

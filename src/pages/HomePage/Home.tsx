@@ -21,8 +21,7 @@ export const Home = () => {
                 <span>Smart Assistant </span> - Your assistant for comfortable work
               </h1>
               <div className="main__descr">
-                All the necessary packages and libraries are always at hand, create and plan tasks, track them as they are
-                completed
+                All the necessary information is always at hand, create and plan tasks, track them as they are completed
               </div>
             </div>
           </div>

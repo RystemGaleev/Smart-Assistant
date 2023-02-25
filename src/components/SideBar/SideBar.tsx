@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 
 import { Logo } from '../UI/Logo';
-import { IoListOutline, IoHomeOutline, IoLibraryOutline } from 'react-icons/io5';
+import { IoListOutline, IoHomeOutline, IoLibraryOutline, IoReceiptOutline, IoRainyOutline } from 'react-icons/io5';
 import { WiDayLightWind, WiDayFog } from 'react-icons/wi';
 import style from './SideBar.module.scss';
 
@@ -22,6 +22,16 @@ const NavigationLink = [
     path: '/library',
     title: 'Library',
     icon: <IoLibraryOutline className={style.icon} size={26} />,
+  },
+  {
+    path: '/weather',
+    title: 'Weather',
+    icon: <IoRainyOutline className={style.icon} size={26} />,
+  },
+  {
+    path: '/documentation',
+    title: 'Doc',
+    icon: <IoReceiptOutline className={style.icon} size={26} />,
   },
 ];
 

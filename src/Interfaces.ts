@@ -24,3 +24,42 @@ export interface IPost {
 export interface IModalProps {
   toggleModal: () => void;
 }
+
+export interface WeatherApiResponse {
+  [weather: string]: any;
+  name: string;
+  main: MainData;
+  snow: SnowData;
+  sys: SystemData;
+  timezone: number;
+  visibility: number;
+  weather: WeatherData[];
+}
+
+interface MainData {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  humidity: number;
+}
+
+interface SnowData {
+  [key: string]: number;
+}
+
+interface SystemData {
+  type: number;
+  id: number;
+  country: string;
+  sunrise: number;
+  sunset: number;
+}
+
+interface WeatherData {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+}

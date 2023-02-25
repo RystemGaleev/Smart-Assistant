@@ -10,6 +10,8 @@
   --white-opacity-color: rgba(255, 255, 255, 0.3);
   --black-opacity-color: rgba(0, 0, 0, 0.3);
 
+  --gradient-dark-color: 268.23deg, rgba(0, 0, 0, 0.72) 23.19%, rgba(231, 65, 188, 0.9) 97.61%;
+  --gradient-light-color: 268.23deg, rgba(231, 94, 160, 0.8) 23.19%, rgba(36, 225, 214, 0.8) 97.61%;
   //font-size
   --fz-16: 16px;
   --fz-18: 18px;
@@ -27,6 +29,7 @@ body[data-theme='light'] {
   --accent-color: var(--pink-color);
   --detail-color: var(--dark-color);
   --opacity-color: var(--white-opacity-color);
+  --gradient-color: var(--gradient-light-color);
 }
 body[data-theme='dark'] {
   --bg-color: var(--white-color);
@@ -34,10 +37,11 @@ body[data-theme='dark'] {
   --accent-color: var(--dark-color);
   --detail-color: var(--light-color);
   --opacity-color: var(--black-opacity-color);
+  --gradient-color: var(--gradient-dark-color);
 }
 
 .title {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 600;
   color: var(--pink-color);
 }

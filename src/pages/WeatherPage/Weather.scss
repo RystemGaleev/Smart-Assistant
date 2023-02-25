@@ -1,0 +1,112 @@
+.weather {
+  padding-top: 140px;
+  &__wrapper {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    gap: 60px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__empty {
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+  }
+  &__search {
+    position: relative;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    border-radius: var(--rad);
+    border: 1px solid var(--opacity-color);
+    &-input {
+      width: calc(100% - 160px);
+      height: 50px;
+      outline: none;
+      font-size: var(--fz-18);
+      font-weight: 400;
+      color: var(--text-color);
+      padding: 12px 50px 12px 16px;
+      border: none;
+      background-color: transparent;
+      &::placeholder {
+        color: var(--opacity-color);
+      }
+    }
+    &-icon {
+      position: absolute;
+      right: 170px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-color);
+      cursor: pointer;
+    }
+    &-btn {
+      width: 160px;
+      height: 50px;
+      outline: none;
+      font-size: var(--fz-20);
+      font-weight: 400;
+      color: var(--text-color);
+      border: none;
+      background-color: transparent;
+      border-left: 1px solid var(--opacity-color);
+      cursor: pointer;
+    }
+  }
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 700px;
+    gap: 40px;
+    color: var(--text-color);
+    span {
+      font-size: 16px;
+      color: grey;
+    }
+    &-center,
+    &-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    &-right {
+      gap: 20px;
+    }
+    &-title {
+      font-size: 40px;
+      font-weight: 500;
+    }
+    &-temp {
+      font-size: 36px;
+      font-weight: 600;
+      text-align: center;
+      margin: 24px 0;
+    }
+    &-other {
+      font-size: var(--fz-20);
+      font-weight: 400;
+    }
+    &-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      &-text {
+        font-size: 26px;
+        font-weight: 600;
+      }
+      img {
+        max-width: 50px;
+        max-height: 50px;
+      }
+      &-temp {
+        font-size: var(--fz-20);
+        font-weight: 400;
+      }
+    }
+  }
+}
