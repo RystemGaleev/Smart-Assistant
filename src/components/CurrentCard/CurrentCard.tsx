@@ -10,6 +10,7 @@ import style from './CurrentCard.module.scss';
 import { FormEvent, useState } from 'react';
 import { CustomInput } from '../UI/CustomInput/CustomInput';
 import { CustomForm } from '../UI/CustomForm/CustomForm';
+import { optionsSelect } from '../../Utils';
 
 interface ICurrentCardProps {
   title: string;
@@ -84,7 +85,7 @@ export const CurrentCard = ({ title, id, description, status, setStatus }: ICurr
       </div>
 
       <div className={style.block}>
-        <StatusSelect value={status} onChange={setStatus} />
+        <StatusSelect options={optionsSelect} value={status} onChange={setStatus} />
         <UiButton onClick={() => dispatch(deleteCard(id))} size="md" variant="primary">
           Remove card
         </UiButton>

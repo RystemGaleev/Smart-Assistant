@@ -2,7 +2,7 @@
   padding-top: 140px;
 
   &__info {
-    max-width: 550px;
+    max-width: 450px;
     color: var(--text-color);
   }
   &__title {
@@ -18,6 +18,34 @@
     font-size: var(--fz-18);
     font-weight: 400;
     margin-top: 20px;
+    line-height: 26px;
+  }
+  &__doc {
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    margin-top: 120px;
+  }
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--text-color);
+    text-align: center;
+  }
+  &__subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    border: 1px solid var(--opacity-color);
+    border-radius: var(--rad);
+    padding: 8px 18px;
+    text-align: center;
+    max-width: max-content;
+    margin: 0 auto;
+  }
+  &__text {
+    font-size: 18px;
+    font-weight: 400;
     line-height: 26px;
   }
 }

@@ -15,6 +15,7 @@ import { Layout } from '../../Layout/Layout';
 import { ICard } from '../../Interfaces';
 import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import './TaskManager.scss';
+import { optionsFilter } from '../../Utils';
 
 export const TaskManager = () => {
   const { cards } = useAppSelector((state) => state.board);
@@ -43,30 +44,48 @@ export const TaskManager = () => {
       setError('Please fill in all fields');
     }
   };
-
   const filteredStatus = (status: ICard['status']) => (card: any) => {
-    if (status === 'Not urgent') {
-      return card.status === 'Not urgent';
-    }
-    if (status === 'Simple') {
-      return card.status === 'Simple';
-    }
-    if (status === 'Critical') {
-      return card.status === 'Critical';
-    }
-    if (status === 'Waiting') {
-      return card.status === 'Waiting';
-    }
-    if (status === 'Completed') {
-      return card.status === 'Completed';
-    }
-    if (status === 'Other') {
-      return card.status === 'Other';
-    }
-    if (status === 'All') {
-      return card.status;
+    switch (status) {
+      case 'Not urgent':
+        return card.status === 'Not urgent';
+      case 'Simple':
+        return card.status === 'Simple';
+      case 'Critical':
+        return card.status === 'Critical';
+      case 'Waiting':
+        return card.status === 'Waiting';
+      case 'Completed':
+        return card.status === 'Completed';
+      case 'Other':
+        return card.status === 'Other';
+      default:
+        return card.status;
     }
   };
+
+  // const filteredStatus = (status: ICard['status']) => (card: any) => {
+  //   if (status === 'Not urgent') {
+  //     return card.status === 'Not urgent';
+  //   }
+  //   if (status === 'Simple') {
+  //     return card.status === 'Simple';
+  //   }
+  //   if (status === 'Critical') {
+  //     return card.status === 'Critical';
+  //   }
+  //   if (status === 'Waiting') {
+  //     return card.status === 'Waiting';
+  //   }
+  //   if (status === 'Completed') {
+  //     return card.status === 'Completed';
+  //   }
+  //   if (status === 'Other') {
+  //     return card.status === 'Other';
+  //   }
+  //   if (status === 'All') {
+  //     return card.status;
+  //   }
+  // };
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -115,7 +134,7 @@ export const TaskManager = () => {
           <div className="taskManager__top">
             <h2 className="title">Task manager</h2>
             <div className="taskManager__tools">
-              <StatusSelect onChange={handleChange} value={filterStatus} />
+              <StatusSelect options={optionsFilter} onChange={handleChange} value={filterStatus} />
               <UiButton onClick={toggleModal} size="md" variant="primary">
                 Create card
               </UiButton>

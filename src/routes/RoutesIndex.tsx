@@ -1,4 +1,3 @@
-import { Doc } from '../pages/DocPage/Doc';
 import { Home } from '../pages/HomePage/Home';
 import { Library } from '../pages/LibraryPage/Library';
 import { NotFound } from '../pages/NotFoundPage/NotFound';
@@ -10,8 +9,6 @@ export const privateRoutes = [
   { path: '/taskmanager', element: <TaskManager /> },
   { path: '/library', element: <Library /> },
   { path: '/weather', element: <Weather /> },
-  { path: '/documentation', element: <Doc /> },
-
 
   { path: '*', element: <NotFound /> },
 ];

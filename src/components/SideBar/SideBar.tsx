@@ -28,11 +28,6 @@ const NavigationLink = [
     title: 'Weather',
     icon: <IoRainyOutline className={style.icon} size={26} />,
   },
-  {
-    path: '/documentation',
-    title: 'Doc',
-    icon: <IoReceiptOutline className={style.icon} size={26} />,
-  },
 ];
 
 export const SideBar = () => {
@@ -58,13 +53,26 @@ export const SideBar = () => {
           </NavLink>
         ))}
       </div>
-      <button className={style.theme} onClick={toggleTheme}>
-        {theme === 'dark' ? (
-          <WiDayLightWind className={style.theme_icon} size={40} />
-        ) : (
-          <WiDayFog className={style.theme_icon} size={40} />
-        )}
-      </button>
+      <div className={style.theme}>
+        <div className={theme !== 'dark' ? `${style.theme_text} ${style.active}` : `${style.theme_text}`}>Dark</div>
+        <button className={style.theme_btn} onClick={toggleTheme}>
+          {theme === 'dark' ? (
+            <WiDayLightWind className={style.theme_icon} size={40} />
+          ) : (
+            <WiDayFog className={style.theme_icon} size={40} />
+          )}
+        </button>
+        <div className={theme === 'dark' ? `${style.theme_text} ${style.active}` : `${style.theme_text}`}>Light</div>
+      </div>
     </div>
   );
 };
+{
+  /* <button className={style.theme} onClick={toggleTheme}>
+{theme === 'dark' ? (
+  <WiDayLightWind className={style.theme_icon} size={40} />
+) : (
+  <WiDayFog className={style.theme_icon} size={40} />
+)}
+</button> */
+}
