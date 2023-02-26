@@ -4,7 +4,7 @@ import style from './StatusSelect.module.scss';
 interface ISelectProps {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value: ICard['status'];
-  options: [{ value: string; label: string }];
+  options: { value: string; label: string }[];
 }
 
 export const StatusSelect = ({ value, onChange, options }: ISelectProps) => {

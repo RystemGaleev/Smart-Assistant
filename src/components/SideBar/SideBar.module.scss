@@ -1,3 +1,4 @@
+@import '../../assets//sass/mixin';
 .sidebar {
   position: fixed;
   left: 0;
@@ -44,34 +45,8 @@
   }
 }
 
-.theme {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid var(--opacity-color);
-  padding: 8px 16px;
-  border-radius: var(--rad);
-  &_text {
-    font-size: var(--fz-20);
-    color: var(--text-color);
-    font-weight: 500;
-    letter-spacing: 1px;
-    &.active {
-      color: var(--pink-color);
-    }
-  }
-
-  &_btn {
-    border: none;
-    outline: none;
-    background: transparent;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    color: var(--pink-color);
+@include xl {
+  .sidebar {
+    display: none;
   }
 }

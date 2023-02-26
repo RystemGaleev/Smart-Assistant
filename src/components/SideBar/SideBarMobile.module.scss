@@ -1,0 +1,23 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 14px;
+}
+.link {
+  font-size: var(--fz-22);
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+  padding: 6px 14px;
+
+  &.active {
+    color: var(--white-color);
+    background-color: var(--pink-color);
+    border-radius: var(--rad);
+  }
+}

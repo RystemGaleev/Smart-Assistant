@@ -40,3 +40,10 @@
   right: 14px;
   top: 14px;
 }
+
+@include md {
+  .content {
+    width: calc(100% - 20px);
+    padding: 50px 14px 20px;
+  }
+}

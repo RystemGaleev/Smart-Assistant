@@ -141,7 +141,7 @@ export const TaskManager = () => {
             </div>
           </div>
           <div className="taskManager__wrapper">
-            {cards?.filter(filteredStatus(filterStatus)).map((card, index) => (
+            {cards?.filter(filteredStatus(filterStatus)).map((card) => (
               <TaskCard key={card.id} {...card} />
             ))}
           </div>

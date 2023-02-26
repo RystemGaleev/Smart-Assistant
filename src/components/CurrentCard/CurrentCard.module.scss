@@ -1,7 +1,8 @@
+@import '../../assets/sass/mixin';
 .card {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 80px;
   width: 100%;
 }
 .top {
@@ -32,7 +33,7 @@
   line-height: 24px;
   color: var(--text-color);
   word-break: break-word;
-  max-height: 480px;
+  max-height: 150px;
   overflow: auto;
   &::-webkit-scrollbar {
     width: 6px; /* ширина scrollbar */
@@ -49,4 +50,17 @@
   gap: 40px;
   align-items: center;
   justify-content: space-between;
+}
+
+@include md {
+  .top {
+    gap: 15px;
+  }
+}
+
+@include sm {
+  .block {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

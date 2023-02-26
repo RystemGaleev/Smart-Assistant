@@ -1,3 +1,4 @@
+@import '../../assets/sass/mixin';
 .taskManager {
   padding-top: 140px;
   &__top {
@@ -10,12 +11,40 @@
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 35px;
     align-items: flex-start;
   }
   &__tools {
     display: flex;
     gap: 40px;
     align-items: center;
+  }
+}
+@include xl {
+  .taskManager {
+    padding-top: 100px;
+    &__wrapper {
+      justify-content: center;
+    }
+  }
+}
+@include lg {
+  .taskManager {
+    &__top {
+      flex-direction: column;
+      gap: 20px;
+    }
+    &__wrapper {
+      justify-content: space-between;
+    }
+  }
+}
+
+@include sm {
+  .taskManager {
+    &__tools {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 }

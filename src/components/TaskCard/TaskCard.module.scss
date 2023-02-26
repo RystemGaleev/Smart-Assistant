@@ -1,3 +1,4 @@
+@import '../../assets/sass/mixin';
 .card {
   position: relative;
   width: 370px;
@@ -170,4 +171,41 @@
 .icon {
   color: var(--text-color);
   cursor: pointer;
+}
+
+@include lg {
+  .card {
+    width: 325px;
+  }
+  .btns {
+    flex-direction: column;
+  }
+  .progress_bar {
+    margin-bottom: 20px;
+  }
+  .title {
+    max-width: 220px;
+  }
+  .descr {
+    -webkit-line-clamp: 5;
+  }
+}
+@include md {
+  .card {
+    width: 100%;
+  }
+  .btns {
+    flex-direction: row;
+  }
+  .title {
+    max-width: 420px;
+  }
+}
+@include sm {
+  .btns {
+    flex-direction: column;
+  }
+  .title {
+    max-width: 220px;
+  }
 }

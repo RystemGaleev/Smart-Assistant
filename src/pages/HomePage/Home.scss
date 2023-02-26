@@ -1,5 +1,6 @@
+@import '../../assets/sass/mixin';
 .main {
-  padding-top: 140px;
+  padding: 140px 0 30px;
 
   &__info {
     max-width: 450px;
@@ -22,7 +23,7 @@
   }
   &__doc {
     display: flex;
-    gap: 60px;
+    gap: 20px;
     justify-content: space-between;
     margin-top: 120px;
   }
@@ -32,20 +33,52 @@
     gap: 16px;
     color: var(--text-color);
     text-align: center;
+    border: 1px solid var(--opacity-color);
+    background-color: var(--detail-color);
+    padding: 30px 24px;
+    border-radius: var(--rad);
   }
   &__subtitle {
     font-size: 24px;
-    font-weight: 400;
-    border: 1px solid var(--opacity-color);
-    border-radius: var(--rad);
-    padding: 8px 18px;
-    text-align: center;
-    max-width: max-content;
-    margin: 0 auto;
+    font-weight: 500;
   }
   &__text {
     font-size: 18px;
     font-weight: 400;
     line-height: 26px;
+  }
+}
+
+@include xl {
+  .main {
+    padding-top: 100px;
+    &__doc {
+      margin-top: 60px;
+    }
+    &__column {
+      padding: 20px 16px;
+    }
+  }
+}
+@include lg {
+  .main {
+    &__doc {
+      flex-direction: column;
+    }
+  }
+}
+
+@include sm {
+  .main {
+    &__title {
+      font-size: 32px;
+      span {
+        font-size: 38px;
+      }
+    }
+    &__text {
+      font-size: 16px;
+      line-height: 24px;
+    }
   }
 }

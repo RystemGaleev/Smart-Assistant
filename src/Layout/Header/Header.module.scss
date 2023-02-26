@@ -1,3 +1,4 @@
+@import '../../assets/sass/mixin';
 .header {
   position: fixed;
   width: 100%;
@@ -9,8 +10,63 @@
   padding: 0 20px;
   z-index: 999;
 }
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
 .logo {
   font-size: 26px;
   font-weight: 600;
   color: var(--pink-color);
+}
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11111;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateX(-100%);
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.overlay_content {
+  position: relative;
+  width: 260px;
+  height: 100vh;
+  background-color: var(--bg-color);
+  transform: translateX(-100%);
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.close_icon {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+@include xl {
+}
+@include lg {
+}
+@include md {
+}
+@include sm {
 }

@@ -1,3 +1,4 @@
+@import '../../assets/sass/mixin';
 .post {
   position: relative;
   width: 100%;
@@ -17,12 +18,13 @@
 }
 
 .block {
-  max-width: 640px;
+  width: 70%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 20px;
   &.full {
-    max-width: 100%;
+    width: 100%;
   }
 }
 .title {
@@ -44,9 +46,8 @@
   word-break: break-all;
 }
 .img {
-  width: 400px;
-  max-height: 225px;
-  border-radius: var(--rad);
+  width: 30%;
+  height: 225px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,5 +81,41 @@
     font-weight: 500;
     color: var(--detail-color);
     cursor: pointer;
+  }
+}
+
+@include lg {
+  .title {
+    max-width: 300px;
+  }
+}
+
+@include md {
+  .post {
+    height: unset;
+    max-height: 600px;
+  }
+  .content {
+    flex-direction: column;
+    justify-content: unset;
+  }
+  .block {
+    width: 100%;
+  }
+  .img {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@include sm {
+  .post {
+    padding: 20px 30px 20px 12px;
+  }
+  .title {
+    max-width: 200px;
+  }
+  .img {
+    width: 100%;
   }
 }

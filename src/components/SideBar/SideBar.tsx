@@ -1,13 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
-import { ThemeContext } from '../../context/ThemeContext';
-
 import { Logo } from '../UI/Logo';
-import { IoListOutline, IoHomeOutline, IoLibraryOutline, IoReceiptOutline, IoRainyOutline } from 'react-icons/io5';
-import { WiDayLightWind, WiDayFog } from 'react-icons/wi';
+import { IoListOutline, IoHomeOutline, IoLibraryOutline, IoRainyOutline } from 'react-icons/io5';
 import style from './SideBar.module.scss';
+import { ThemeToggler } from '../UI/ThemeToggler/ThemeToggler';
 
-const NavigationLink = [
+export const NavigationLinks = [
   {
     path: '/',
     title: 'Home',
@@ -31,10 +28,6 @@ const NavigationLink = [
 ];
 
 export const SideBar = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext) || {
-    theme: 'default',
-    toggleTheme: () => {},
-  };
   return (
     <div className={style.sidebar}>
       <div className={style.content}>
@@ -42,7 +35,7 @@ export const SideBar = () => {
           <Logo />
         </div>
 
-        {NavigationLink.map((link) => (
+        {NavigationLinks.map((link) => (
           <NavLink
             key={link.path}
             to={link.path}
@@ -52,27 +45,8 @@ export const SideBar = () => {
             {link.icon}
           </NavLink>
         ))}
-      </div>
-      <div className={style.theme}>
-        <div className={theme !== 'dark' ? `${style.theme_text} ${style.active}` : `${style.theme_text}`}>Dark</div>
-        <button className={style.theme_btn} onClick={toggleTheme}>
-          {theme === 'dark' ? (
-            <WiDayLightWind className={style.theme_icon} size={40} />
-          ) : (
-            <WiDayFog className={style.theme_icon} size={40} />
-          )}
-        </button>
-        <div className={theme === 'dark' ? `${style.theme_text} ${style.active}` : `${style.theme_text}`}>Light</div>
+        <ThemeToggler />
       </div>
     </div>
   );
 };
-{
-  /* <button className={style.theme} onClick={toggleTheme}>
-{theme === 'dark' ? (
-  <WiDayLightWind className={style.theme_icon} size={40} />
-) : (
-  <WiDayFog className={style.theme_icon} size={40} />
-)}
-</button> */
-}
