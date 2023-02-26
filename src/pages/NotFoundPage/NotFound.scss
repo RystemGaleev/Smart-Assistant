@@ -1,0 +1,37 @@
+@import '../../assets/sass/mixin';
+.notFound {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    padding: 0px 0 30px 250px;
+    margin-top: 60px;
+  }
+  &__info {
+    padding: 140px 0 30px 250px;
+  }
+  &__error {
+    font-size: 60px;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  &__title {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-color);
+  }
+}
+
+@include xl {
+  .notFound {
+    &__wrapper {
+      padding: 0;
+    }
+    &__info {
+      padding: 0;
+      padding-top: 100px;
+    }
+  }
+}

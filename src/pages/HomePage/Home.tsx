@@ -2,6 +2,7 @@ import { Layout } from '../../Layout/Layout';
 import { motion } from 'framer-motion';
 import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import './Home.scss';
+import { SideBar } from '../../components/SideBar/SideBar';
 
 export const Home = () => {
   return (
@@ -15,6 +16,7 @@ export const Home = () => {
         variants={AnimationPage}
       >
         <div className="container">
+          <SideBar />
           <div className="main__wrapper">
             <div className="main__info">
               <h1 className="main__title">

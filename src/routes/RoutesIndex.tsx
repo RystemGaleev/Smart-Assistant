@@ -5,10 +5,9 @@ import { TaskManager } from '../pages/TaskManagerPage/TaskManager';
 import { Weather } from '../pages/WeatherPage/Weather';
 
 export const privateRoutes = [
+  { path: '*', element: <NotFound /> },
   { path: '/', element: <Home /> },
   { path: '/taskmanager', element: <TaskManager /> },
   { path: '/library', element: <Library /> },
   { path: '/weather', element: <Weather /> },
-
-  { path: '*', element: <NotFound /> },
 ];

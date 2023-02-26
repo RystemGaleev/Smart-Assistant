@@ -9,6 +9,7 @@
   border-bottom: 1px solid var(--pink-color);
   padding: 0 20px;
   z-index: 999;
+  display: none;
 }
 .wrapper {
   display: flex;
@@ -63,10 +64,12 @@
   cursor: pointer;
 }
 @include xl {
-}
-@include lg {
-}
-@include md {
+  .header {
+    display: flex;
+  }
 }
 @include sm {
+  .logo {
+    font-size: 22px;
+  }
 }

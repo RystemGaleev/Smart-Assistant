@@ -1,6 +1,5 @@
 @import '../../assets/sass/mixin';
 .weather {
-  padding-top: 140px;
   &__wrapper {
     width: 100%;
     margin-top: 60px;
@@ -9,6 +8,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0px 0 30px 250px;
+  }
+  &__info {
+    padding: 140px 0 30px 250px;
   }
   &__empty {
     font-size: 40px;
@@ -111,9 +114,25 @@
     }
   }
 }
+@include xl {
+  .weather {
+    &__wrapper {
+      padding: 0;
+    }
+    &__info {
+      padding: 0;
+      padding-top: 100px;
+    }
+  }
+}
 
 @include lg {
   .weather {
+    padding-top: 100px;
+
+    &__wrapper {
+      padding: 0;
+    }
     &__search {
       width: 100%;
     }

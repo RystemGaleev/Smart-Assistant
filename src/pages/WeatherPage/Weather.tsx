@@ -6,6 +6,7 @@ import { getWeatherData } from '../../services/servicesWeather';
 import { TfiSearch } from 'react-icons/tfi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { WeatherApiResponse } from '../../Interfaces';
+import { SideBar } from '../../components/SideBar/SideBar';
 
 export const Weather = () => {
   const [weather, setWeather] = useState<WeatherApiResponse | string>('');
@@ -26,25 +27,17 @@ export const Weather = () => {
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(city);
     setCity(e.target.value);
   };
-
-  // if (textValue.description.trim() !== '') {
-  //   dispatch(addTask({ cardId: id, taskDescription: textValue.description }));
-  //   setShowInput(false);
-  //   setTextValue({ description: '', status: '' });
-  // }
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
 
   return (
     <Layout>
       <section className="weather">
         <div className="container">
-          <h2 className="title">Weather</h2>
+          <SideBar />
+          <div className="weather__info">
+            <h2 className="title">Weather</h2>
+          </div>
           <div className="weather__wrapper">
             <div className="weather__search">
               <input

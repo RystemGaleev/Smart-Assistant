@@ -1,7 +1,8 @@
 import { Layout } from '../../Layout/Layout';
 import { motion } from 'framer-motion';
-import './NotFound.scss';
 import { AnimationPage, PageTranstition } from '../../Animation/Animation';
+import './NotFound.scss';
+import { SideBar } from '../../components/SideBar/SideBar';
 
 export const NotFound = () => {
   return (
@@ -15,7 +16,14 @@ export const NotFound = () => {
         variants={AnimationPage}
       >
         <div className="container">
-          <div className="notFound__wrapper">notFound</div>
+          <SideBar />
+          <div className="notFound__info">
+            <h2 className="title">Not Found</h2>
+          </div>
+          <div className="notFound__wrapper">
+            <div className="notFound__error">404</div>
+            <div className="notFound__title">Unfortunately, I have not found such a page, but I can suggest others</div>
+          </div>
         </div>
       </motion.section>
     </Layout>

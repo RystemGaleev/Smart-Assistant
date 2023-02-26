@@ -1,7 +1,9 @@
 @import '../../assets/sass/mixin';
 .main {
-  padding: 140px 0 30px;
-
+  &__wrapper {
+    padding: 140px 0 30px 250px;
+    overflow-x: hidden;
+  }
   &__info {
     max-width: 450px;
     color: var(--text-color);
@@ -52,6 +54,9 @@
 @include xl {
   .main {
     padding-top: 100px;
+    &__wrapper {
+      padding: 0;
+    }
     &__doc {
       margin-top: 60px;
     }

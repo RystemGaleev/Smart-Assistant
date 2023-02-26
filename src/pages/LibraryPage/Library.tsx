@@ -16,6 +16,7 @@ import { motion } from 'framer-motion';
 import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import { Layout } from '../../Layout/Layout';
 import './Library.scss';
+import { SideBar } from '../../components/SideBar/SideBar';
 
 export const Library = () => {
   const dispatch = useAppDispatch();
@@ -101,6 +102,7 @@ export const Library = () => {
         variants={AnimationPage}
       >
         <div className="container">
+          <SideBar />
           <div className="library__top">
             <h2 className="title">Library</h2>
             <div className="library__tools">

@@ -16,6 +16,7 @@ import { ICard } from '../../Interfaces';
 import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import './TaskManager.scss';
 import { optionsFilter } from '../../Utils';
+import { SideBar } from '../../components/SideBar/SideBar';
 
 export const TaskManager = () => {
   const { cards } = useAppSelector((state) => state.board);
@@ -131,6 +132,7 @@ export const TaskManager = () => {
         variants={AnimationPage}
       >
         <div className="container">
+          <SideBar />
           <div className="taskManager__top">
             <h2 className="title">Task manager</h2>
             <div className="taskManager__tools">

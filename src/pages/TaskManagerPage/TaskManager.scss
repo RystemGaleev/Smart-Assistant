@@ -1,18 +1,20 @@
 @import '../../assets/sass/mixin';
 .taskManager {
-  padding-top: 140px;
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     margin-bottom: 30px;
+    padding: 140px 0 30px 250px;
   }
   &__wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 35px;
     align-items: flex-start;
+    justify-content: center;
+    padding: 0 0 30px 250px;
   }
   &__tools {
     display: flex;
@@ -24,7 +26,10 @@
   .taskManager {
     padding-top: 100px;
     &__wrapper {
-      justify-content: center;
+      padding: 0;
+    }
+    &__top {
+      padding: 0;
     }
   }
 }
