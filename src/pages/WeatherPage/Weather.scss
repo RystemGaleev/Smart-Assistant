@@ -61,7 +61,7 @@
       cursor: pointer;
     }
   }
-  &__info {
+  &__information {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -136,7 +136,7 @@
     &__search {
       width: 100%;
     }
-    &__info {
+    &__information {
       flex-direction: column;
       width: 100%;
       align-items: center;

@@ -58,33 +58,33 @@ export const Weather = () => {
               </button>
             </div>
             {typeof weather === 'object' && weather !== null ? (
-              <div className="weather__info">
-                <div className="weather__info-left">
-                  <div className="weather__info-title">
+              <div className="weather__information">
+                <div className="weather__information-left">
+                  <div className="weather__information-title">
                     {weather.name} | {weather.sys.country}
                   </div>
-                  <div className="weather__info-temp">{(weather.main.temp - 273.15).toFixed(1)} &deg;C</div>
+                  <div className="weather__information-temp">{(weather.main.temp - 273.15).toFixed(1)} &deg;C</div>
                 </div>
-                <div className="weather__info-center">
-                  <div className="weather__info-block-temp">
+                <div className="weather__information-center">
+                  <div className="weather__information-block-temp">
                     Min : {(weather.main.temp_min - 273.15).toFixed(1)} <span>&deg;C</span>
                   </div>
-                  <div className="weather__info-block-temp">
+                  <div className="weather__information-block-temp">
                     Max : {(weather.main.temp_max - 273.15).toFixed(1)} <span>&deg;C</span>
                   </div>
-                  <div className="weather__info-block">
-                    <div className="weather__info-block-text">{weather.weather[0].main}</div>
+                  <div className="weather__information-block">
+                    <div className="weather__information-block-text">{weather.weather[0].main}</div>
                     <img src={`http://api.openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="icon" />
                   </div>
                 </div>
-                <div className="weather__info-right">
-                  <div className="weather__info-other">
+                <div className="weather__information-right">
+                  <div className="weather__information-other">
                     Humidity : {weather.main.humidity} <span>%</span>
                   </div>
-                  <div className="weather__info-other">
+                  <div className="weather__information-other">
                     Pressure : {weather.main.pressure} <span>hPa</span>
                   </div>
-                  <div className="weather__info-other">
+                  <div className="weather__information-other">
                     Wind Speed : {weather.wind.speed} <span>m/s</span>
                   </div>
                 </div>
