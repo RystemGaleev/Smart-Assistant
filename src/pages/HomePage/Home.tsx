@@ -1,9 +1,9 @@
 import { Layout } from '../../Layout/Layout';
 import { motion } from 'framer-motion';
-import { AnimationPage, PageTranstition } from '../../Animation/Animation';
-import './Home.scss';
 import { SideBar } from '../../components/SideBar/SideBar';
 import { MainSvg } from '../../components/UI/MainSvg';
+import { AnimationPage, PageTranstition } from '../../Animation/Animation';
+import './Home.scss';
 
 export const Home = () => {
   return (

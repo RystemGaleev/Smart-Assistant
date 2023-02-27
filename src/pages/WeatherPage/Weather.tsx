@@ -7,16 +7,20 @@ import { TfiSearch } from 'react-icons/tfi';
 import { IoCloseOutline } from 'react-icons/io5';
 import { WeatherApiResponse } from '../../Interfaces';
 import { SideBar } from '../../components/SideBar/SideBar';
+import { Loader } from '../../components/UI/Loader/Loader';
 
 export const Weather = () => {
   const [weather, setWeather] = useState<WeatherApiResponse | string>('');
   const [city, setCity] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const getData = async () => {
+    setLoading(true);
     try {
       if (city !== '') {
         const data = await getWeatherData(city);
         setWeather(data);
+        setLoading(false);
       }
     } catch (error) {
       let errorMessage = 'Failed to make a request';
@@ -37,6 +41,7 @@ export const Weather = () => {
           <SideBar />
           <div className="weather__info">
             <h2 className="title">Weather</h2>
+            {loading && loading && <Loader />}
           </div>
           <div className="weather__wrapper">
             <div className="weather__search">
