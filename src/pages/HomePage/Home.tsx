@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { AnimationPage, PageTranstition } from '../../Animation/Animation';
 import './Home.scss';
 import { SideBar } from '../../components/SideBar/SideBar';
+import { MainSvg } from '../../components/UI/MainSvg';
 
 export const Home = () => {
   return (
@@ -26,8 +27,18 @@ export const Home = () => {
                 All the necessary information is always at hand, create and plan tasks, track them as they are completed
               </div>
             </div>
+
             <div className="main__doc">
-              <div className="main__column">
+              <MainSvg />
+            </div>
+          </div>
+        </div>
+      </motion.main>
+    </Layout>
+  );
+};
+{
+  /* <div className="main__column">
                 <h3 className="main__subtitle">Tast Manager</h3>
                 <div className="main__text">
                   The Task Manager is an ideal solution for those who want to stay organized and monitor the progress of their
@@ -53,11 +64,5 @@ export const Home = () => {
                   humidity, and precipitation for the current day. The interface is designed to be user-friendly, providing him
                   with the necessary information quickly and efficiently.
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.main>
-    </Layout>
-  );
-};
+              </div> */
+}

@@ -3,6 +3,9 @@
   &__wrapper {
     padding: 140px 0 30px 250px;
     overflow-x: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
   }
   &__info {
     max-width: 450px;
@@ -23,12 +26,7 @@
     margin-top: 20px;
     line-height: 26px;
   }
-  &__doc {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    margin-top: 120px;
-  }
+
   &__column {
     display: flex;
     flex-direction: column;
@@ -56,25 +54,31 @@
     padding-top: 100px;
     &__wrapper {
       padding: 0;
+      gap: 20px;
     }
-    &__doc {
-      margin-top: 60px;
-    }
+
     &__column {
       padding: 20px 16px;
     }
   }
 }
-@include lg {
+@include md {
   .main {
-    &__doc {
+    &__wrapper {
       flex-direction: column;
+      align-items: center;
     }
   }
 }
 
 @include sm {
   .main {
+    &__wrapper {
+      align-items: center;
+    }
+    &__info {
+      text-align: center;
+    }
     &__title {
       font-size: 32px;
       span {
